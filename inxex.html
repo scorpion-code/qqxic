@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>全球芯 — 电子元器件原厂代理</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230B1F3A'/%3E%3Cpath d='M8 20V12h2v8h4v2H8v-2zm8-2v-6h2v6h4v-8h2v8h-2v2h-4v-2h-2z' fill='%2334D3EB'/%3E%3Ccircle cx='24' cy='9' r='2' fill='%2334D3EB'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&family=Noto+Serif+SC:wght@600;700&display=swap">
+<style>
+:root{
+  --ink:#0B1F3A; --navy:#123A5C; --blue:#1B6FD8; --cyan:#17B6C4; --cyan-soft:#E0F7FA;
+  --bg:#F4F7FB; --card:#FFFFFF; --text:#1C2B3A; --muted:#5B6B7B; --line:#E2E9F2;
+  --amber:#E8912A; --green:#1F9D55;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Noto Sans SC',-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:var(--bg);color:var(--text);line-height:1.65;font-size:15px}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+.container{max-width:1180px;margin:0 auto;padding:0 24px}
+.hidden{display:none!important}
+
+/* ===== 顶部导航 ===== */
+.nav{position:sticky;top:0;z-index:100;background:rgba(11,31,58,.96);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:19px;color:#fff;letter-spacing:.5px}
+.brand svg{flex-shrink:0}
+.brand small{display:block;font-size:10px;font-weight:400;color:#7FB2D8;letter-spacing:2px;margin-top:1px}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-links a{padding:8px 14px;border-radius:8px;color:#C7D6E8;font-size:14.5px;font-weight:500;transition:.2s}
+.nav-links a:hover{color:#fff;background:rgba(255,255,255,.08)}
+.nav-links a.active{color:#fff;background:rgba(52,211,235,.16);color:#7FE3F2}
+.nav-cta{margin-left:10px}
+.btn{display:inline-flex;align-items:center;gap:7px;padding:10px 20px;border-radius:9px;font-size:14.5px;font-weight:600;transition:.2s;border:1px solid transparent}
+.btn-primary{background:var(--cyan);color:#04222B}
+.btn-primary:hover{background:#25C6D8;transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:#C7D6E8;border-color:rgba(255,255,255,.25)}
+.btn-ghost:hover{border-color:#7FE3F2;color:#fff}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-dark:hover{background:#14304F}
+.btn-outline{background:#fff;border-color:var(--line);color:var(--text)}
+.btn-outline:hover{border-color:var(--cyan);color:var(--ink)}
+.menu-toggle{display:none;color:#fff;font-size:24px;padding:6px 10px}
+.mobile-menu{display:none;flex-direction:column;background:var(--ink);padding:10px 20px 18px;border-top:1px solid rgba(255,255,255,.08)}
+.mobile-menu a{padding:12px 8px;color:#C7D6E8;font-size:15px;border-bottom:1px solid rgba(255,255,255,.06)}
+.mobile-menu a:last-child{border-bottom:none}
+.mobile-menu.open{display:flex}
+
+/* ===== Hero ===== */
+.hero{position:relative;background:var(--ink);color:#fff;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background-image:url('https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/UVl3bBspPoBiOKxLxkuck88RnXf');background-size:cover;background-position:center 38%;opacity:.5}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(100deg,rgba(11,31,58,.98) 18%,rgba(11,31,58,.78) 55%,rgba(11,31,58,.35))}
+.hero-inner{position:relative;z-index:2;padding:96px 0 84px;max-width:1180px;margin:0 auto;padding-left:24px;padding-right:24px}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(52,211,235,.12);border:1px solid rgba(52,211,235,.35);color:#7FE3F2;font-size:13px;font-weight:500;padding:6px 14px;border-radius:99px;margin-bottom:22px}
+.hero-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:#34D3EB;box-shadow:0 0 8px #34D3EB}
+.hero h1{font-size:44px;line-height:1.22;font-weight:900;letter-spacing:1px;max-width:720px}
+.hero h1 em{font-style:normal;color:#34D3EB}
+.hero-sub{font-size:16.5px;color:#B9CBDF;max-width:600px;margin-top:18px;line-height:1.8}
+.hero-actions{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:52px;border-top:1px solid rgba(255,255,255,.12);padding-top:30px}
+.hstat .num{font-size:30px;font-weight:900;color:#fff;font-family:'Noto Serif SC',serif}
+.hstat .num span{color:#34D3EB}
+.hstat .lbl{font-size:12.5px;color:#8FA9C4;margin-top:3px}
+
+/* ===== Section ===== */
+.section{padding:72px 0}
+.section-alt{background:#fff}
+.sec-head{max-width:680px;margin-bottom:42px}
+.sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
+.sec-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;color:var(--cyan);letter-spacing:3px;text-transform:uppercase}
+.sec-eyebrow::before{content:'';width:22px;height:2px;background:var(--cyan)}
+.sec-head.center .sec-eyebrow::after{content:'';width:22px;height:2px;background:var(--cyan)}
+.sec-title{font-size:30px;font-weight:900;color:var(--ink);margin-top:10px;line-height:1.3}
+.sec-desc{color:var(--muted);margin-top:12px;font-size:15px;line-height:1.8}
+
+/* ===== 品牌墙 ===== */
+.brand-wall{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.brand-cell{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px 14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;cursor:pointer;transition:.2s;text-align:center}
+.brand-cell:hover{border-color:var(--cyan);box-shadow:0 8px 22px rgba(11,31,58,.08);transform:translateY(-3px)}
+.brand-cell .bn{font-weight:800;font-size:16px;color:var(--ink);letter-spacing:.5px}
+.brand-cell .bs{font-size:11.5px;color:var(--muted);line-height:1.5}
+
+/* ===== 优势卡片 ===== */
+.feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.feature-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px 24px;transition:.2s}
+.feature-card:hover{border-color:var(--cyan);box-shadow:0 10px 26px rgba(11,31,58,.07)}
+.feature-card .ic{width:46px;height:46px;border-radius:12px;background:var(--cyan-soft);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.feature-card .ic svg{width:24px;height:24px;stroke:var(--cyan)}
+.feature-card h3{font-size:17px;font-weight:700;color:var(--ink);margin-bottom:8px}
+.feature-card p{font-size:13.5px;color:var(--muted);line-height:1.75}
+
+/* ===== 领域 ===== */
+.app-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.app-card{position:relative;border-radius:14px;overflow:hidden;background:var(--ink);min-height:200px;cursor:pointer;display:flex;align-items:flex-end}
+.app-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.6;transition:.3s}
+.app-card:hover img{opacity:.45;transform:scale(1.04)}
+.app-card .ov{position:relative;z-index:2;padding:22px 20px;background:linear-gradient(0deg,rgba(11,31,58,.9),transparent)}
+.app-card h3{color:#fff;font-size:18px;font-weight:700}
+.app-card p{color:#B9CBDF;font-size:12.5px;margin-top:5px;line-height:1.6}
+
+/* ===== 热门料号 ===== */
+.part-table-wrap{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.part-table{width:100%;border-collapse:collapse;table-layout:fixed}
+.part-table colgroup col:nth-child(1){width:15%}
+.part-table colgroup col:nth-child(2){width:17%}
+.part-table colgroup col:nth-child(3){width:16%}
+.part-table colgroup col:nth-child(4){width:22%}
+.part-table colgroup col:nth-child(5){width:14%}
+.part-table colgroup col:nth-child(6){width:16%}
+.part-table th{background:#F0F5FA;color:var(--ink);font-size:13px;font-weight:700;text-align:left;padding:13px 18px;border-bottom:1px solid var(--line)}
+.part-table td{padding:14px 18px;border-bottom:1px solid #EEF2F7;font-size:13.5px;vertical-align:middle}
+.part-table tr:last-child td{border-bottom:none}
+.part-table tbody tr:hover{background:#F7FBFE}
+.pn{font-weight:700;color:var(--ink);font-family:'Noto Serif SC',serif}
+.tag{display:inline-block;font-size:11px;font-weight:600;padding:3px 9px;border-radius:99px}
+.tag-green{background:#E4F6EC;color:var(--green)}
+.tag-blue{background:#E8F1FC;color:var(--blue)}
+.tag-amber{background:#FDF1E0;color:#B4630A}
+
+/* ===== 新闻 ===== */
+.news-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.news-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px;transition:.2s;display:flex;flex-direction:column}
+.news-card:hover{border-color:var(--cyan);box-shadow:0 10px 26px rgba(11,31,58,.07)}
+.news-card .date{font-size:12px;color:#9AA8B8;display:flex;align-items:center;gap:6px}
+.news-card h3{font-size:16.5px;font-weight:700;color:var(--ink);margin:10px 0 8px;line-height:1.5}
+.news-card p{font-size:13.5px;color:var(--muted);line-height:1.75;flex:1}
+.news-card .more{margin-top:14px;font-size:13px;color:var(--cyan);font-weight:600}
+
+/* ===== CTA ===== */
+.cta-band{background:linear-gradient(120deg,var(--ink),var(--navy));border-radius:18px;padding:48px 44px;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap}
+.cta-band h2{font-size:26px;font-weight:900;letter-spacing:.5px}
+.cta-band p{color:#B9CBDF;margin-top:10px;font-size:14.5px;max-width:520px}
+
+/* ===== 页脚 ===== */
+.footer{background:var(--ink);color:#8FA9C4;margin-top:0}
+.footer-main{display:grid;grid-template-columns:2fr 1fr 1fr 1.4fr;gap:40px;padding:60px 0 40px}
+.footer h4{color:#fff;font-size:15px;font-weight:700;margin-bottom:16px}
+.footer ul{list-style:none}
+.footer li{margin-bottom:10px;font-size:13.5px}
+.footer a:hover{color:#7FE3F2}
+.footer .fbrand{font-size:20px;font-weight:900;color:#fff}
+.footer .fbrand small{display:block;font-size:10.5px;color:#7FB2D8;font-weight:400;letter-spacing:2px;margin-top:4px}
+.footer .fdesc{margin-top:14px;font-size:13px;line-height:1.8}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding:18px 0;font-size:12.5px;text-align:center;color:#6E87A2}
+
+/* ===== 页面头部 ===== */
+.page-hero{background:var(--ink);color:#fff;padding:64px 0 56px;position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;top:-40%;right:-10%;width:560px;height:560px;background:radial-gradient(circle,rgba(52,211,235,.16),transparent 65%)}
+.page-hero h1{font-size:34px;font-weight:900;position:relative}
+.page-hero p{color:#B9CBDF;margin-top:10px;font-size:15px;max-width:640px;position:relative;line-height:1.8}
+.crumbs{font-size:13px;color:#7FB2D8;margin-bottom:14px;position:relative}
+.crumbs a:hover{color:#fff}
+
+/* ===== 关于我们 ===== */
+.about-lead{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center}
+.about-lead h2{font-size:26px;font-weight:900;color:var(--ink);line-height:1.4}
+.about-lead p{color:var(--muted);margin-top:16px;font-size:14.5px;line-height:1.9}
+.about-lead .imgbox{border-radius:16px;overflow:hidden;box-shadow:0 18px 40px rgba(11,31,58,.14)}
+.timeline{display:grid;grid-template-columns:110px 46px 1fr;gap:0;margin-top:8px}
+.tl-item{display:contents}
+.tl-time{padding:14px 0;text-align:right;font-weight:700;color:var(--blue);font-size:14.5px}
+.tl-axis{position:relative;display:flex;justify-content:center;padding:14px 0}
+.tl-axis::before{content:'';position:absolute;top:0;bottom:0;width:2px;background:var(--line)}
+.tl-dot{position:relative;z-index:1;width:13px;height:13px;border-radius:50%;background:var(--cyan);align-self:center;box-shadow:0 0 0 4px #E0F7FA}
+.tl-body{padding:14px 0 26px 6px}
+.tl-body h4{font-size:15.5px;font-weight:700;color:var(--ink)}
+.tl-body p{font-size:13px;color:var(--muted);margin-top:4px;line-height:1.7}
+
+/* ===== 品牌页 ===== */
+.brand-banner{background:linear-gradient(120deg,var(--ink),var(--navy));border-radius:16px;padding:34px 36px;color:#fff;display:flex;align-items:center;gap:26px;flex-wrap:wrap}
+.brand-banner .bb-name{font-size:28px;font-weight:900}
+.brand-banner .bb-name small{display:block;font-size:12.5px;color:#7FB2D8;font-weight:400;margin-top:4px;letter-spacing:1px}
+.brand-banner .bb-meta{margin-left:auto;display:flex;gap:14px;flex-wrap:wrap}
+.brand-banner .bbm{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);border-radius:10px;padding:10px 16px;text-align:center;min-width:96px}
+.brand-banner .bbm b{display:block;font-size:18px;color:#7FE3F2}
+.brand-banner .bbm span{font-size:11px;color:#9FB4CC}
+.license-bar{display:flex;align-items:center;gap:12px;background:#FDF6EC;border:1px solid #F3DFC0;border-radius:12px;padding:14px 18px;margin-top:18px;font-size:13.5px;color:#7A5A24}
+.license-bar svg{width:22px;height:22px;flex-shrink:0;stroke:#B4630A}
+.line-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:26px}
+.line-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px;cursor:pointer;transition:.2s;display:flex;flex-direction:column}
+.line-card:hover{border-color:var(--cyan);box-shadow:0 10px 26px rgba(11,31,58,.07)}
+.line-card .lc-img{height:120px;border-radius:10px;overflow:hidden;margin-bottom:16px}
+.line-card .lc-img img{width:100%;height:100%;object-fit:cover}
+.line-card h3{font-size:16.5px;font-weight:700;color:var(--ink)}
+.line-card p{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.7;flex:1}
+.line-card .lc-foot{margin-top:14px;font-size:12.5px;color:var(--cyan);font-weight:600;display:flex;align-items:center;gap:4px}
+
+/* ===== 型号表格 ===== */
+.model-table{width:100%;border-collapse:collapse;table-layout:fixed}
+.model-table colgroup col:nth-child(1){width:20%}
+.model-table colgroup col:nth-child(2){width:24%}
+.model-table colgroup col:nth-child(3){width:15%}
+.model-table colgroup col:nth-child(4){width:15%}
+.model-table colgroup col:nth-child(5){width:15%}
+.model-table colgroup col:nth-child(6){width:11%}
+.model-table th{background:#F0F5FA;color:var(--ink);font-size:13px;font-weight:700;text-align:left;padding:12px 14px;border-bottom:1px solid var(--line)}
+.model-table td{padding:12px 14px;border-bottom:1px solid #EEF2F7;font-size:13px;vertical-align:middle}
+.model-table tr:last-child td{border-bottom:none}
+.model-table tbody tr:hover{background:#F7FBFE}
+.inq-btn{display:inline-block;background:var(--cyan);color:#04222B;font-size:12.5px;font-weight:600;padding:5px 12px;border-radius:7px}
+.inq-btn:hover{background:#25C6D8}
+
+/* ===== 应用详情 ===== */
+.solution-block{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:8px}
+.sol-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px 26px 22px}
+.sol-card h3{font-size:17px;font-weight:700;color:var(--ink);display:flex;align-items:center;gap:10px}
+.sol-card h3 svg{width:22px;height:22px;flex-shrink:0;stroke:var(--cyan)}
+.sol-card ul{list-style:none;margin-top:12px}
+.sol-card li{font-size:13.5px;color:var(--muted);padding:6px 0 6px 22px;position:relative;line-height:1.7}
+.sol-card li::before{content:'';position:absolute;left:2px;top:14px;width:6px;height:6px;border-radius:50%;background:var(--cyan)}
+
+/* ===== 联系 ===== */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:960px;margin:0 auto}
+.contact-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px 26px;display:flex;gap:18px;align-items:flex-start;transition:.2s}
+.contact-card:hover{border-color:var(--cyan);box-shadow:0 10px 26px rgba(11,31,58,.07)}
+.contact-card .cc-ic{width:46px;height:46px;border-radius:12px;background:var(--cyan-soft);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.contact-card .cc-ic svg{width:22px;height:22px;stroke:var(--cyan)}
+.contact-card h3{font-size:14px;font-weight:700;color:var(--muted);margin-bottom:8px}
+.contact-card .cc-main{font-size:19px;font-weight:800;color:var(--ink);line-height:1.5;word-break:break-all}
+.contact-card .cc-main a{color:var(--ink)}
+.contact-card .cc-main a:hover{color:var(--blue)}
+.contact-card .cc-sub{font-size:13px;color:var(--muted);margin-top:10px;line-height:1.7;padding-top:10px;border-top:1px dashed var(--line)}
+
+/* ===== 详情页 ===== */
+.detail-wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:34px;align-items:start}
+.detail-img{border-radius:14px;overflow:hidden;box-shadow:0 14px 34px rgba(11,31,58,.12)}
+.detail-info h1{font-size:24px;font-weight:900;color:var(--ink)}
+.detail-info .d-brand{margin-top:6px;font-size:13px;color:var(--muted)}
+.detail-info .d-brand b{color:var(--blue)}
+.dspec{border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:20px}
+.dspec table{width:100%;border-collapse:collapse;table-layout:fixed}
+.dspec td{padding:11px 16px;font-size:13.5px;border-bottom:1px solid #EEF2F7}
+.dspec tr:last-child td{border-bottom:none}
+.dspec td:first-child{width:32%;color:var(--muted);background:#F8FAFD;font-weight:500}
+.dspec td:last-child{color:var(--text);font-weight:500}
+.d-actions{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}
+
+/* ===== 新闻文章 ===== */
+.article-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:44px 48px;box-shadow:0 8px 30px rgba(11,31,58,.05)}
+.article-meta{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:26px;padding-bottom:22px;border-bottom:1px dashed var(--line)}
+.article-meta .cat-tag{display:inline-flex;align-items:center;gap:6px;background:var(--cyan-soft);color:#0E7A86;font-size:12.5px;font-weight:700;padding:5px 13px;border-radius:99px}
+.article-meta .cat-tag::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--cyan)}
+.article-meta .date{font-size:13px;color:#8A97A5}
+.article-lead{font-size:16.5px;line-height:2;color:var(--ink);font-weight:500;border-left:3px solid var(--cyan);padding-left:20px;margin:0 0 28px;background:linear-gradient(90deg,#F2FAFB,transparent 70%)}
+.article-body p{font-size:15px;line-height:2.05;color:#3A4C60;margin:0 0 22px;text-align:justify}
+.article-body p:last-child{margin-bottom:0}
+.article-footer{margin-top:34px;padding-top:24px;border-top:1px dashed var(--line);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.article-tags{display:flex;gap:8px;flex-wrap:wrap}
+.article-tags span{font-size:12px;color:#5B6B7B;background:#F1F5F9;border:1px solid var(--line);padding:4px 12px;border-radius:99px}
+.article-back{font-size:13.5px;color:var(--cyan);font-weight:600;display:inline-flex;align-items:center;gap:6px}
+.article-cta{background:linear-gradient(120deg,var(--ink),var(--navy));border-radius:16px;padding:30px 34px;color:#fff;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:30px}
+.article-cta b{font-size:17px;font-weight:700;display:block}
+.article-cta span{font-size:13.5px;color:#B9CBDF;margin-top:6px;display:block}
+.article-cta .ph{font-size:20px;font-weight:800;color:#7FE3F2;letter-spacing:.5px}
+
+/* ===== 响应式 ===== */
+@media (max-width:1024px){
+  .brand-wall{grid-template-columns:repeat(4,1fr)}
+  .feature-grid{grid-template-columns:repeat(2,1fr)}
+  .app-grid{grid-template-columns:repeat(2,1fr)}
+  .line-grid{grid-template-columns:repeat(2,1fr)}
+  .footer-main{grid-template-columns:1fr 1fr}
+}
+@media (max-width:768px){
+  .nav-links{display:none}
+  .menu-toggle{display:block}
+  .hero h1{font-size:31px}
+  .hero-inner{padding:64px 20px 56px}
+  .hero-stats{grid-template-columns:repeat(2,1fr)}
+  .section{padding:54px 0}
+  .sec-title{font-size:25px}
+  .brand-wall{grid-template-columns:repeat(3,1fr)}
+  .feature-grid{grid-template-columns:1fr 1fr}
+  .app-grid{grid-template-columns:1fr}
+  .news-grid{grid-template-columns:1fr}
+  .about-lead{grid-template-columns:1fr;gap:28px}
+  .timeline{grid-template-columns:86px 36px 1fr}
+  .line-grid{grid-template-columns:1fr}
+  .solution-block{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .detail-wrap{grid-template-columns:1fr}
+  .cta-band{padding:36px 26px}
+  .footer-main{grid-template-columns:1fr;gap:28px}
+  .page-hero h1{font-size:27px}
+}
+@media (max-width:520px){
+  .brand-wall{grid-template-columns:repeat(2,1fr)}
+  .feature-grid{grid-template-columns:1fr}
+  .hero-stats{grid-template-columns:1fr 1fr}
+  .part-table{font-size:12px}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== 导航 ===== -->
+<nav class="nav" id="topNav">
+  <div class="container nav-inner">
+    <a href="#/home" class="brand" data-nav="home">
+      <svg width="34" height="34" viewBox="0 0 32 32" fill="none"><rect width="32" height="32" rx="7" fill="#14304F"/><path d="M8 20V12h2v8h4v2H8v-2zm8-2v-6h2v6h4v-8h2v8h-2v2h-4v-2h-2z" fill="#34D3EB"/><circle cx="24" cy="9" r="2" fill="#34D3EB"/></svg>
+      <span>全球芯<small>GLOBALCHIP</small></span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#/home" data-nav="home">首页</a>
+      <a href="#/about" data-nav="about">关于我们</a>
+      <a href="#/products" data-nav="products">产品中心</a>
+      <a href="#/apps" data-nav="apps">应用领域</a>
+      <a href="#/news" data-nav="news">新闻资讯</a>
+      <a href="#/contact" data-nav="contact">联系我们</a>
+      <a href="#/contact" class="btn btn-primary nav-cta" data-nav="contact">立即询价</a>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="菜单">☰</button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#/home">首页</a>
+    <a href="#/about">关于我们</a>
+    <a href="#/products">产品中心</a>
+    <a href="#/apps">应用领域</a>
+    <a href="#/news">新闻资讯</a>
+    <a href="#/contact">联系我们</a>
+    <a href="#/contact" style="color:#7FE3F2;font-weight:600">立即询价</a>
+  </div>
+</nav>
+
+<!-- ===== 视图容器 ===== -->
+<main id="viewRoot"></main>
+
+<!-- ===== 页脚 ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-main">
+      <div>
+        <div class="fbrand">全球芯<small>GLOBALCHIP</small></div>
+        <p class="fdesc">专注电子元器件原厂代理与供应链服务，覆盖电源管理、模拟器件、MCU、连接器与被动元件，为消费电子、汽车电子、工业控制等领域客户提供正品保障与一站式采购支持。</p>
+      </div>
+      <div>
+        <h4>快速导航</h4>
+        <ul>
+          <li><a href="#/about">关于我们</a></li>
+          <li><a href="#/products">产品中心</a></li>
+          <li><a href="#/apps">应用领域</a></li>
+          <li><a href="#/news">新闻资讯</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>产品服务</h4>
+        <ul>
+          <li><a href="#/products">品牌代理</a></li>
+          <li><a href="#/products">型号查询</a></li>
+          <li><a href="#/contact">电话询价</a></li>
+          <li><a href="#/contact">样品申请</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>联系方式</h4>
+        <ul>
+          <li>电话：13602517760</li>
+          <li>邮箱：zhengkun.zhang@qqxic.cn</li>
+          <li>地址：深圳市龙华区龙华街道和联社区锦华发工业园3栋硅谷大院T1栋</li>
+          <li>周一至周六 9:00 – 18:00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 全球芯 GLOBALCHIP</div>
+  </div>
+</footer>
+
+<!-- something todo -->
+
+<script>
+/* ===== 数据 ===== */
+var IMG = {
+  hero:'https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/UVl3bBspPoBiOKxLxkuck88RnXf',
+  ic:'https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/AZ5fbHpwOombRBxaGcOcgqBGnZc',
+  connector:'https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/OtpPbjysyoyQMPxdVJOcLYgZnwf',
+  passive:'https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/H7CDbQx7HoH9qpxFrYBcOqydnTc',
+  power:'https://media.doubao.com/space/api/box/stream/download/all_by_mount_point/FATibIjh1oZ4dSx8qTOc0Holnch'
+};
+var BRANDS = {
+  ti:{name:'TI 德州仪器',line:'模拟 · MCU · 电源',img:'ic',meta:{授权等级:'授权分销商',合作年限:'12 年',产品线:'6 条'}},
+  nxp:{name:'NXP 恩智浦',line:'MCU · 汽车电子',img:'ic',meta:{授权等级:'授权分销商',合作年限:'10 年',产品线:'4 条'}},
+  st:{name:'ST 意法半导体',line:'MCU · 功率器件',img:'ic',meta:{授权等级:'授权分销商',合作年限:'9 年',产品线:'5 条'}},
+  murata:{name:'Murata 村田',line:'被动元件 · 陶瓷电容',img:'passive',meta:{授权等级:'授权经销商',合作年限:'8 年',产品线:'3 条'}},
+  tdk:{name:'TDK 东电化',line:'电感 · 磁性元件',img:'passive',meta:{授权等级:'授权经销商',合作年限:'7 年',产品线:'3 条'}},
+  te:{name:'TE Connectivity',line:'连接器 · 传感器',img:'connector',meta:{授权等级:'授权分销商',合作年限:'6 年',产品线:'4 条'}},
+  on:{name:'onsemi 安森美',line:'功率器件 · 传感器',img:'power',meta:{授权等级:'授权分销商',合作年限:'8 年',产品线:'4 条'}},
+  infineon:{name:'Infineon 英飞凌',line:'功率器件 · 汽车电子',img:'power',meta:{授权等级:'授权分销商',合作年限:'5 年',产品线:'3 条'}},
+  toshiba:{name:'Toshiba 东芝',line:'分立器件 · 光电器件',img:'ic',meta:{授权等级:'授权分销商',合作年限:'11 年',产品线:'3 条'}},
+  yageo:{name:'YAGEO 国巨',line:'电阻 · 电容 · 电感',img:'passive',meta:{授权等级:'授权经销商',合作年限:'9 年',产品线:'4 条'}},
+  molex:{name:'Molex 莫仕',line:'连接器系统',img:'connector',meta:{授权等级:'授权分销商',合作年限:'7 年',产品线:'3 条'}},
+  maxim:{name:'Analog Devices',line:'模拟器件 · 数据转换',img:'ic',meta:{授权等级:'授权分销商',合作年限:'6 年',产品线:'4 条'}}
+};
+var LINES = {
+  ti:{power:'电源管理',analog:'模拟器件',mcu:'MCU 与处理器'},
+  nxp:{mcu:'MCU 与处理器',auto:'汽车电子'},
+  st:{mcu:'MCU 与处理器',power:'功率器件'},
+  murata:{cap:'陶瓷电容',passive:'被动元件'},
+  tdk:{ind:'电感与磁性元件'},
+  te:{conn:'连接器',sensor:'传感器'},
+  on:{power:'功率器件',sensor:'传感器'},
+  infineon:{power:'功率器件',auto:'汽车电子'},
+  toshiba:{discrete:'分立器件',opto:'光电器件'},
+  yageo:{res:'贴片电阻',cap:'贴片电容',ind:'贴片电感'},
+  molex:{conn:'连接器系统'},
+  maxim:{analog:'模拟器件',conv:'数据转换器'}
+};
+var MODELS = {
+  'ti-power':[
+    {pn:'TPS54331DR',desc:'3.5A 28V 同步降压转换器',pkg:'SOIC-8',volt:'4.5–28V',stock:'现货',img:'power'},
+    {pn:'TPS7A4901DGNR',desc:'150mA 低噪声 LDO 稳压器',pkg:'MSOP-8',volt:'3–36V',stock:'现货',img:'power'},
+    {pn:'LM2596S-5.0',desc:'3A 降压开关稳压器',pkg:'TO-263',volt:'4.5–40V',stock:'期货',img:'power'},
+    {pn:'TPS61021ADSGR',desc:'3A 升压转换器',pkg:'WSON-8',volt:'0.5–5V',stock:'现货',img:'power'}
+  ],
+  'ti-analog':[
+    {pn:'OPA2134PA',desc:'低失真音频运算放大器',pkg:'DIP-8',volt:'±2.5–18V',stock:'现货',img:'ic'},
+    {pn:'ADS1115IDGSR',desc:'16 位 ADC 模数转换器',pkg:'MSOP-10',volt:'2–5.5V',stock:'现货',img:'ic'},
+    {pn:'LM358DR',desc:'双路运算放大器',pkg:'SOIC-8',volt:'3–32V',stock:'现货',img:'ic'},
+    {pn:'INA128P',desc:'精密仪表放大器',pkg:'DIP-8',volt:'±2.25–18V',stock:'期货',img:'ic'}
+  ],
+  'ti-mcu':[
+    {pn:'MSP430G2553IPW20',desc:'16 位超低功耗 MCU',pkg:'TSSOP-20',volt:'1.8–3.6V',stock:'现货',img:'ic'},
+    {pn:'CC2640R2FRHBR',desc:'BLE 低功耗无线 MCU',pkg:'VQFN-32',volt:'1.8–3.8V',stock:'现货',img:'ic'},
+    {pn:'TMS320F28335PGFA',desc:'32 位 C2000 实时 MCU',pkg:'LQFP-176',volt:'1.8–3.3V',stock:'期货',img:'ic'}
+  ],
+  'nxp-mcu':[
+    {pn:'LPC1768FBD100',desc:'Cortex-M3 微控制器',pkg:'LQFP-100',volt:'2.4–3.6V',stock:'现货',img:'ic'},
+    {pn:'MK64FN1M0VLL12',desc:'Cortex-M4 Kinetis MCU',pkg:'LQFP-100',volt:'1.71–3.6V',stock:'现货',img:'ic'},
+    {pn:'i.MX6ULL',desc:'应用处理器（核心板方案）',pkg:'BGA-289',volt:'1.8–3.3V',stock:'期货',img:'ic'}
+  ],
+  'nxp-auto':[
+    {pn:'TJA1042T',desc:'CAN 收发器（汽车级）',pkg:'SOIC-8',volt:'4.5–5.5V',stock:'现货',img:'ic'},
+    {pn:'S9S12G128',desc:'汽车级 S12 MCU',pkg:'LQFP-64',volt:'3.1–5.5V',stock:'现货',img:'ic'}
+  ],
+  'st-mcu':[
+    {pn:'STM32F103C8T6',desc:'Cortex-M3 MCU',pkg:'LQFP-48',volt:'2–3.6V',stock:'现货',img:'ic'},
+    {pn:'STM32H743VIT6',desc:'Cortex-M7 高性能 MCU',pkg:'LQFP-100',volt:'1.62–3.6V',stock:'现货',img:'ic'},
+    {pn:'STM32G474RET6',desc:'数字电源专用 MCU',pkg:'LQFP-64',volt:'1.71–3.6V',stock:'期货',img:'ic'}
+  ],
+  'st-power':[
+    {pn:'STP75NF75',desc:'75V N 沟道功率 MOSFET',pkg:'TO-220',volt:'75V',stock:'现货',img:'power'},
+    {pn:'STGW30NC60HD',desc:'600V IGBT',pkg:'TO-247',volt:'600V',stock:'现货',img:'power'},
+    {pn:'L6234PD',desc:'三相电机驱动',pkg:'SO-20',volt:'7–52V',stock:'期货',img:'power'}
+  ],
+  'murata-cap':[
+    {pn:'GRM21BR71H104KA01',desc:'MLCC 100nF 50V X7R 0805',pkg:'0805',volt:'50V',stock:'现货',img:'passive'},
+    {pn:'GRM32ER71H106KA12',desc:'MLCC 10µF 50V X7R 1210',pkg:'1210',volt:'50V',stock:'现货',img:'passive'},
+    {pn:'GRM188R60J105KA01',desc:'MLCC 1µF 6.3V X5R 0603',pkg:'0603',volt:'6.3V',stock:'现货',img:'passive'}
+  ],
+  'murata-passive':[
+    {pn:'LQW18AN22NJ00',desc:'高频绕线电感 22nH',pkg:'0603',volt:'—',stock:'现货',img:'passive'},
+    {pn:'BLM18AG601SN1D',desc:'磁珠 600Ω 0603',pkg:'0603',volt:'—',stock:'现货',img:'passive'}
+  ],
+  'tdk-ind':[
+    {pn:'VLS6045EX-2R2N',desc:'功率电感 2.2µH',pkg:'6045',volt:'—',stock:'现货',img:'passive'},
+    {pn:'MLZ2012A1R0MT000',desc:'叠层电感 1µH',pkg:'0805',volt:'—',stock:'现货',img:'passive'},
+    {pn:'SPM6530T-1R0M',desc:'金属功率电感 1µH',pkg:'6530',volt:'—',stock:'期货',img:'passive'}
+  ],
+  'te-conn':[
+    {pn:'1-770904-0',desc:'线对板连接器 10P 2.54mm',pkg:'2.54mm',volt:'250V',stock:'现货',img:'connector'},
+    {pn:'640454-6',desc:'MTA-100 连接器 6P',pkg:'2.54mm',volt:'250V',stock:'现货',img:'connector'},
+    {pn:'5-146256-2',desc:'AMPMODU 针座 12P',pkg:'2.54mm',volt:'250V',stock:'期货',img:'connector'}
+  ],
+  'te-sensor':[
+    {pn:'TLE4973',desc:'电流传感器（磁感式）',pkg:'SMD',volt:'3.3–5V',stock:'期货',img:'power'}
+  ],
+  'on-power':[
+    {pn:'NCP81239',desc:'CPU 电源管理控制器',pkg:'QFN-40',volt:'4.5–25V',stock:'现货',img:'power'},
+    {pn:'FAN73933',desc:'600V 半桥驱动',pkg:'SOIC-14',volt:'10–20V',stock:'现货',img:'power'},
+    {pn:'NTMFS4C06N',desc:'40V N 沟道 MOSFET',pkg:'SO-8FL',volt:'40V',stock:'现货',img:'power'}
+  ],
+  'on-sensor':[
+    {pn:'N34TS108',desc:'温度传感器（I²C）',pkg:'WLCSP-4',volt:'1.8–3.6V',stock:'期货',img:'ic'}
+  ],
+  'infineon-power':[
+    {pn:'IRFB4110PBF',desc:'100V 功率 MOSFET',pkg:'TO-220',volt:'100V',stock:'现货',img:'power'},
+    {pn:'IPW60R099P7',desc:'600V CoolMOS',pkg:'TO-247',volt:'600V',stock:'现货',img:'power'},
+    {pn:'IKW75N60T',desc:'600V IGBT 75A',pkg:'TO-247',volt:'600V',stock:'期货',img:'power'}
+  ],
+  'infineon-auto':[
+    {pn:'BTS7002-1EPA',desc:'智能高边功率开关',pkg:'TSDSO-14',volt:'4–28V',stock:'现货',img:'power'}
+  ],
+  'toshiba-discrete':[
+    {pn:'2SK3568',desc:'N 沟道 MOSFET',pkg:'TO-220',volt:'600V',stock:'现货',img:'power'},
+    {pn:'RN1426',desc:'数字晶体管',pkg:'SSM',volt:'50V',stock:'现货',img:'passive'}
+  ],
+  'toshiba-opto':[
+    {pn:'TLP521-4',desc:'光电耦合器 4 通道',pkg:'DIP-16',volt:'55V',stock:'现货',img:'ic'},
+    {pn:'TLP2361',desc:'高速光耦',pkg:'SO-6',volt:'5V',stock:'现货',img:'ic'}
+  ],
+  'yageo-res':[
+    {pn:'RC0603FR-0710KL',desc:'厚膜电阻 10kΩ 1%',pkg:'0603',volt:'75V',stock:'现货',img:'passive'},
+    {pn:'RC0805FR-0747KL',desc:'厚膜电阻 47kΩ 1%',pkg:'0805',volt:'150V',stock:'现货',img:'passive'},
+    {pn:'RC1206FR-071KL',desc:'厚膜电阻 1kΩ 1%',pkg:'1206',volt:'200V',stock:'现货',img:'passive'}
+  ],
+  'yageo-cap':[
+    {pn:'CC0603KRX7R9BB104',desc:'MLCC 100nF 50V',pkg:'0603',volt:'50V',stock:'现货',img:'passive'},
+    {pn:'CC0805KKX7R8BB105',desc:'MLCC 1µF 25V',pkg:'0805',volt:'25V',stock:'现货',img:'passive'}
+  ],
+  'yageo-ind':[
+    {pn:'PE-0402CD220GTT',desc:'绕线电感 22nH',pkg:'0402',volt:'—',stock:'现货',img:'passive'}
+  ],
+  'molex-conn':[
+    {pn:'-',desc:'线对板 · 板对板连接器',pkg:'按需',volt:'—',stock:'期货',img:'connector'}
+  ],
+  'maxim-analog':[
+    {pn:'MAX3232EUE+',desc:'RS-232 收发器',pkg:'TSSOP-16',volt:'3–5.5V',stock:'现货',img:'ic'},
+    {pn:'MAX485ESA+',desc:'RS-485 收发器',pkg:'SOIC-8',volt:'4.75–5.25V',stock:'现货',img:'ic'}
+  ],
+  'maxim-conv':[
+    {pn:'MAX11612EUA+',desc:'12 位 ADC',pkg:'µMAX-8',volt:'2.7–3.6V',stock:'现货',img:'ic'},
+    {pn:'MAX5170AEEE+',desc:'16 位 DAC',pkg:'QSOP-16',volt:'2.7–5.5V',stock:'期货',img:'ic'}
+  ]
+};
+var NEWS = [
+  {d:'2026-09-18',t:'全球芯与 TI 完成 2026 年度授权续约',c:'双方签署新一年度授权分销协议，产品线覆盖电源管理、模拟器件与 MCU 三大领域，持续为客户提供原厂正品与技术支持。',cat:'公司新闻',body:'2026 年 9 月，全球芯与德州仪器（TI）正式完成新一年度授权分销协议续签。本轮续约覆盖电源管理、模拟器件与 MCU 三大产品线，并新增部分车规级器件的渠道授权。\n\n自 2018 年成为 TI 授权分销商以来，双方在备货协同、样品支持与技术培训上持续加深合作。新协议生效后，全球芯将获得更完整的产品线与更优的供货配额，可为客户提供更稳定的交期保障与更全面的选型支持。\n\n公司负责人表示，TI 产品线是公司主动器件业务的核心支柱之一，续约后将继续加大常备库存投入，重点保障工业控制与新能源应用客户的量产需求。'},
+  {d:'2026-09-02',t:'公司亮相深圳国际电子展 ELEXCON 2026',c:'展位 7 号馆 C12，集中展示电源、汽车电子与工业控制三大应用方案，现场提供技术选型咨询。',cat:'展会动态',body:'2026 年 9 月 2 日，深圳国际电子展暨嵌入式系统展（ELEXCON 2026）在深圳会展中心开幕，全球芯携三大应用方案亮相 7 号馆 C12 展位。\n\n本次展会重点展示电源管理、汽车电子与工业控制三大领域的最新器件方案，包括 TI 电源芯片组合、NXP 车规 MCU 方案以及 onsemi 功率器件应用板卡，现场工程师提供一对一选型咨询。\n\n展会期间，公司同步发布了 2026 下半年常见料号供货周期说明，帮助客户合理规划采购节奏。欢迎各界客户与合作伙伴莅临展位交流。'},
+  {d:'2026-08-15',t:'Murata 村田授权产品线全面到货',c:'陶瓷电容、磁珠与电感核心料号批量入库，涵盖 0402–1210 全尺寸段，支持样品申请与小批量供货。',cat:'公司新闻',body:'全球芯代理的 Murata 村田授权产品线近期完成大批量补货，陶瓷电容、磁珠与电感核心料号已全面入库，涵盖 0402 至 1210 全尺寸段。\n\n本次补货以市场高频需求料号为主，包括 GRM 系列 MLCC、BLM 系列磁珠与 LQW 系列高频电感，均支持样品申请与灵活的小批量供货，帮助研发与试产阶段客户缩短采购周期。\n\n仓储方面，相关料号已按批次完成来料检验并录入可追溯系统，出货可提供原厂出货证明。客户可通过官网 BOM 询价通道批量查询库存与报价。'},
+  {d:'2026-07-28',t:'行业观察：2026 下半年被动元件供需展望',c:'受新能源与汽车电子需求拉动，MLCC 与功率电感交期有所拉长，建议客户提前规划 2–3 个月安全库存。',cat:'行业动态',body:'进入 2026 年下半年，被动元件市场供需关系出现明显变化。受新能源汽车与储能产业需求拉动，MLCC、功率电感等核心品类产能趋于紧张，部分常规尺寸交期已从 6–8 周拉长至 10–14 周。\n\n从需求端看，车规级与大电流应用的增长最为显著；供应端则受原材料与产能调配影响，高容值、大尺寸产品供给弹性有限。\n\n我们建议相关客户：一、对量产计划中的关键料号提前规划 2–3 个月安全库存；二、关注替代料与兼容料号，通过多源方案降低断供风险；三、及时与供应商确认年度配额。全球芯将持续发布市场观察，协助客户做好供应规划。'},
+  {d:'2026-06-20',t:'全球芯通过 ISO 9001 年度监督审核',c:'质量管理体系运行稳定，来料检验、仓储管理与出货追溯环节全部达标，持续保障交付品质。',cat:'公司新闻',body:'2026 年 6 月，全球芯顺利通过 ISO 9001 质量管理体系年度监督审核。审核范围覆盖采购管理、来料检验、仓储管理、出货检验与追溯流程。\n\n审核组对公司批次化库存管理、二维码追溯体系及质量记录完整度给予肯定，认为质量管理体系运行稳定、持续有效。\n\n作为授权分销商，品质与可追溯性是客户信任的基础。公司将继续严格执行来料 100% 外观与电性抽检，关键批次可提供原厂出货证明，持续保障交付品质。'},
+  {d:'2026-05-12',t:'BOM 批量询价服务升级',c:'支持通过电话或邮件提交 BOM 清单询价，一次可询最多 200 个料号，工作日 2 小时内响应报价。',cat:'产品服务',body:'为提升采购沟通效率，全球芯升级了 BOM 批量询价服务。\n\n客户可通过电话 13602517760 或邮件 zhengkun.zhang@qqxic.cn 提交 BOM 清单，每行填写一个型号及预估数量，单次最多支持 200 个料号；提交后由销售团队在工作日 2 小时内统一响应报价与交期。\n\n该服务支持多品牌混询，报价将区分现货与期货、标注最小起订量，并附推荐替代料建议。批量询价服务上线以来已服务超过 200 家客户，平均响应时间约 1.5 小时。'}
+];
+var APPS = [
+  {id:'consumer',name:'消费电子',desc:'手机、PC、可穿戴设备的电源与信号链路器件',img:'ic'},
+  {id:'auto',name:'汽车电子',desc:'车规级 MCU、功率器件与车载连接方案',img:'power'},
+  {id:'industrial',name:'工业控制',desc:'PLC、伺服驱动与工业电源的完整器件选型',img:'power'},
+  {id:'comm',name:'通信设备',desc:'5G 基站、网络设备的电源与高速信号器件',img:'connector'},
+  {id:'newenergy',name:'新能源',desc:'光伏逆变、储能与充电桩的功率器件方案',img:'power'},
+  {id:'medical',name:'医疗电子',desc:'医疗监护设备的高可靠性模拟与电源器件',img:'ic'}
+];
+</script>
+
+<script>
+/* ===== 工具 ===== */
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function toast(msg){
+  var t=document.getElementById('toast');if(!t){t=document.createElement('div');t.id='toast';t.style.cssText='position:fixed;left:50%;bottom:36px;transform:translateX(-50%);background:#0B1F3A;color:#fff;padding:12px 22px;border-radius:10px;font-size:14px;z-index:9999;box-shadow:0 8px 24px rgba(0,0,0,.2);opacity:0;transition:.3s';document.body.appendChild(t)}
+  t.textContent=msg;t.style.opacity='1';clearTimeout(t._t);t._t=setTimeout(function(){t.style.opacity='0'},2600)
+}
+
+/* ===== 视图模板 ===== */
+function viewHome(){
+  var brandCells=Object.keys(BRANDS).map(function(k){
+    var b=BRANDS[k];return '<div class="brand-cell" onclick="go(\'#/products/'+k+'\')"><span class="bn">'+b.name+'</span><span class="bs">'+b.line+'</span></div>'
+  }).join('');
+  var feat=[['shield','授权代理资质','与 TI、NXP、ST 等原厂建立授权合作，所有器件均可提供原厂出货证明与可追溯批次信息。'],['box','现货库存保障','核心料号常备现货，深圳仓 24 小时发货，支持样品申请与快速打样，缩短研发与量产周期。'],['chip','原厂技术对接','团队具备原厂技术培训背景，可提供选型建议、替代料推荐与原理图级应用支持。'],['doc','BOM 一键询价','支持电话或邮件提交 BOM 清单询价，一次可询最多 200 个料号，工作日 2 小时内响应报价。']];
+  var featHTML=feat.map(function(f){
+    return '<div class="feature-card"><div class="ic">'+icon(f[0])+'</div><h3>'+f[1]+'</h3><p>'+f[2]+'</p></div>'
+  }).join('');
+  var appsHTML=APPS.map(function(a){
+    return '<div class="app-card" onclick="go(\'#/apps\')"><img src="'+IMG[a.img]+'" alt="'+a.name+'"><div class="ov"><h3>'+a.name+'</h3><p>'+a.desc+'</p></div></div>'
+  }).join('');
+  var hot=[['TPS54331DR','TI 德州仪器','降压转换器','3.5A 28V SOIC-8','现货','green'],['STM32F103C8T6','ST 意法半导体','MCU','Cortex-M3 LQFP-48','现货','green'],['GRM21BR71H104KA01','Murata 村田','MLCC','100nF 50V 0805','现货','green'],['RC0603FR-0710KL','YAGEO 国巨','厚膜电阻','10kΩ 1% 0603','现货','green'],['STP75NF75','ST 意法半导体','MOSFET','75V TO-220','期货','blue'],['MAX3232EUE+','Analog Devices','收发器','RS-232 TSSOP-16','现货','green']];
+  var hotHTML=hot.map(function(r){
+    return '<tr><td class="pn">'+r[0]+'</td><td>'+r[1]+'</td><td>'+r[2]+'</td><td>'+r[3]+'</td><td><span class="tag tag-'+r[5]+'">'+r[4]+'</span></td><td><a class="inq-btn" href="#/contact" onclick="toast(\'询价请致电 13602517760 或邮件 zhengkun.zhang@qqxic.cn\')">询价</a></td></tr>'
+  }).join('');
+  var newsHTML=NEWS.slice(0,3).map(function(n,i){
+    return '<div class="news-card" onclick="go(\'#/news/'+i+'\')" style="cursor:pointer"><div class="date">'+n.d+' · '+n.cat+'</div><h3>'+n.t+'</h3><p>'+n.c+'</p><a class="more" href="#/news/'+i+'">阅读全文 →</a></div>'
+  }).join('');
+  return '<section class="hero"><div class="hero-bg"></div><div class="hero-inner">'+
+    '<div class="hero-tag">原厂授权 · 正品保障 · 快速交付</div>'+
+    '<h1>电子元器件<em>原厂代理</em><br>一站式供应链服务</h1>'+
+    '<p class="hero-sub">全球芯深耕电子元器件分销 12 年，代理 TI、NXP、ST、Murata、TDK、TE 等原厂产品线，为消费电子、汽车电子、工业控制与新能源领域客户提供选型、采购与技术支持。</p>'+
+    '<div class="hero-actions"><a class="btn btn-primary" href="#/products">浏览代理品牌</a><a class="btn btn-ghost" href="#/contact">电话询价</a></div>'+
+    '<div class="hero-stats"><div class="hstat"><div class="num">12<span>+</span></div><div class="lbl">合作原厂品牌</div></div><div class="hstat"><div class="num">34<span>+</span></div><div class="lbl">代理产品线</div></div><div class="hstat"><div class="num">5000<span>+</span></div><div class="lbl">常备库存型号</div></div><div class="hstat"><div class="num">98<span>%</span></div><div class="lbl">准时交付率</div></div></div>'+
+  '</div></section>'+
+  '<section class="section"><div class="container">'+
+    '<div class="sec-head center"><span class="sec-eyebrow">授权品牌</span><h2 class="sec-title">代理品牌矩阵</h2><p class="sec-desc">覆盖模拟器件、MCU、功率器件、连接器与被动元件全品类，点击品牌查看产品线与库存型号</p></div>'+
+    '<div class="brand-wall">'+brandCells+'</div>'+
+  '</div></section>'+
+  '<section class="section section-alt"><div class="container">'+
+    '<div class="sec-head center"><span class="sec-eyebrow">核心优势</span><h2 class="sec-title">为什么选择全球芯</h2></div>'+
+    '<div class="feature-grid">'+featHTML+'</div>'+
+  '</div></section>'+
+  '<section class="section"><div class="container">'+
+    '<div class="sec-head center"><span class="sec-eyebrow">应用领域</span><h2 class="sec-title">覆盖六大应用场景</h2></div>'+
+    '<div class="app-grid">'+appsHTML+'</div>'+
+  '</div></section>'+
+  '<section class="section section-alt"><div class="container">'+
+    '<div class="sec-head center"><span class="sec-eyebrow">热门料号</span><h2 class="sec-title">常备库存 · 现货速发</h2><p class="sec-desc">以下为常用型号示例，完整型号库请联系我们查询</p></div>'+
+    '<div class="part-table-wrap"><table class="part-table"><colgroup><col><col><col><col><col><col></colgroup><thead><tr><th>型号</th><th>品牌</th><th>类别</th><th>主要参数</th><th>库存</th><th></th></tr></thead><tbody>'+hotHTML+'</tbody></table></div>'+
+  '</div></section>'+
+  '<section class="section"><div class="container">'+
+    '<div class="sec-head center"><span class="sec-eyebrow">最新动态</span><h2 class="sec-title">新闻资讯</h2></div>'+
+    '<div class="news-grid">'+newsHTML+'</div>'+
+  '</div></section>'+
+  '<section class="section section-alt" style="padding-top:20px"><div class="container"><div class="cta-band"><div><h2>需要批量询价或选型支持？</h2><p>请致电 13602517760 或邮件 zhengkun.zhang@qqxic.cn，应用工程师将快速响应您的需求。</p></div><a class="btn btn-primary" href="#/contact">立即联系</a></div></div></section>';
+}
+
+function viewAbout(){
+  var tls=[['2014','公司成立','全球芯成立于深圳，从被动元件分销起步，服务华南地区中小制造客户。'],['2016','首批品牌授权','成为 YAGEO、Toshiba 授权经销商，产品线扩展至分立器件与光电器件。'],['2018','扩充主动器件','签约 TI、NXP 授权分销，正式进入 MCU 与模拟器件领域。'],['2021','仓储体系升级','深圳中心仓扩容至 5000㎡，常备库存型号突破 3000 个。'],['2023','汽车电子布局','新增 onsemi、Infineon 车规功率产品线，通过 IATF 16949 体系准备。'],['2026','全品类服务','代理品牌 12+、产品线 34+，服务客户超 3000 家，年出货器件超 8 亿颗。']];
+  var tlHTML=tls.map(function(t){
+    return '<div class="tl-item"><div class="tl-time">'+t[0]+'</div><div class="tl-axis"><span class="tl-dot"></span></div><div class="tl-body"><h4>'+t[1]+'</h4><p>'+t[2]+'</p></div></div>'
+  }).join('');
+  return '<div class="page-hero"><div class="container"><div class="crumbs"><a href="#/home">首页</a> / 关于我们</div><h1>关于全球芯</h1><p>原厂授权代理 · 全品类供应链服务 · 12 年行业深耕</p></div></div>'+
+  '<section class="section"><div class="container"><div class="about-lead">'+
+    '<div><h2>从深圳起步，服务全球电子制造</h2><p>全球芯（GLOBALCHIP）成立于 2014 年，是一家专注于电子元器件原厂代理与供应链服务的专业分销商。公司以「正品、专业、高效」为经营理念，与全球主流半导体与被动元件原厂建立授权合作，为研发与量产客户提供可靠的器件供应保障。</p><p>目前公司设有深圳中心仓与香港中转仓，仓储面积 5000㎡，常备库存型号 5000+，配合专业的技术支持团队，能够为客户提供从选型、样品、批量供货到交期管理的全流程服务。</p></div>'+
+    '<div class="imgbox"><img src="'+IMG.ic+'" alt="电子元器件"></div>'+
+  '</div></div></section>'+
+  '<section class="section section-alt"><div class="container"><div class="sec-head center"><span class="sec-eyebrow">发展历程</span><h2 class="sec-title">十二年成长足迹</h2></div><div class="timeline">'+tlHTML+'</div></div></section>'+
+  '<section class="section"><div class="container"><div class="sec-head center"><span class="sec-eyebrow">资质荣誉</span><h2 class="sec-title">合规运营 · 品质保障</h2></div>'+
+    '<div class="feature-grid">'+
+      '<div class="feature-card"><div class="ic">'+icon('cert')+'</div><h3>ISO 9001</h3><p>质量管理体系认证，覆盖采购、仓储、检验与出货全流程。</p></div>'+
+      '<div class="feature-card"><div class="ic">'+icon('shield')+'</div><h3>授权分销资质</h3><p>多品牌原厂授权证书，支持向原厂核验渠道合法性。</p></div>'+
+      '<div class="feature-card"><div class="ic">'+icon('search')+'</div><h3>正品保障</h3><p>来料 100% 外观与电性抽检，关键批次可提供原厂出货证明。</p></div>'+
+      '<div class="feature-card"><div class="ic">'+icon('box')+'</div><h3>仓储追溯</h3><p>批次化管理 + 二维码追溯，出货记录可完整回溯。</p></div>'+
+    '</div></div></section>';
+}
+
+function viewProducts(){
+  var cells=Object.keys(BRANDS).map(function(k){
+    var b=BRANDS[k];return '<div class="brand-cell" onclick="go(\'#/products/'+k+'\')"><span class="bn">'+b.name+'</span><span class="bs">'+b.line+'</span></div>'
+  }).join('');
+  return '<div class="page-hero"><div class="container"><div class="crumbs"><a href="#/home">首页</a> / 产品中心</div><h1>产品中心</h1><p>按「品牌 → 产品线 → 型号」逐级浏览，全部器件均为原厂授权渠道</p></div></div>'+
+  '<section class="section"><div class="container"><div class="sec-head center"><span class="sec-eyebrow">品牌矩阵</span><h2 class="sec-title">选择代理品牌</h2><p class="sec-desc">点击进入品牌产品线，查询现货型号与参数</p></div><div class="brand-wall">'+cells+'</div></div></section>';
+}
+
+function viewBrand(bid){
+  var b=BRANDS[bid];if(!b)return viewProducts();
+  var lines=LINES[bid];
+  var lineHTML=Object.keys(lines).map(function(lk){
+    var img=IMG[b.img];
+    return '<div class="line-card" onclick="go(\'#/products/'+bid+'/'+lk+'\')"><div class="lc-img"><img src="'+img+'" alt="'+lines[lk]+'"></div><h3>'+lines[lk]+'</h3><p>查看该产品线下的常用型号、主要参数与库存状态。</p><div class="lc-foot">查看型号 →</div></div>'
+  }).join('');
+  var mm=b.meta;
+  return '<div class="page-hero"><div class="container"><div class="crumbs"><a href="#/home">首页</a> / <a href="#/products">产品中心</a> / '+b.name+'</div>'+
+    '<div class="brand-banner"><div class="bb-name">'+b.name+'<small>'+b.line+'</small></div><div class="bb-meta"><div class="bbm"><b>'+mm['授权等级']+'</b><span>授权等级</span></div><div class="bbm"><b>'+mm['合作年限']+'</b><span>合作年限</span></div><div class="bbm"><b>'+mm['产品线']+'</b><span>产品线</span></div></div></div>'+
+    '<div class="license-bar">'+icon('cert')+'<span>本司持有该品牌原厂<strong>授权代理证书</strong>，渠道正规，所有器件均可提供原厂出货证明与质量追溯。</span></div>'+
+  '</div></div>'+
+  '<section class="section"><div class="container"><div class="sec-head"><span class="sec-eyebrow">产品线</span><h2 class="sec-title">'+b.name+' · 产品线</h2></div><div class="line-grid">'+lineHTML+'</div></div></section>';
+}
+
+function viewLine(bid,lk){
+  var b=BRANDS[bid];var lines=LINES[bid];var ln=lines[lk];
+  var key=bid+'-'+lk;var rows=MODELS[key]||[];
+  if(!rows.length)return viewBrand(bid);
+  var rowHTML=rows.map(function(r){
+    return '<tr><td class="pn">'+r.pn+'</td><td>'+r.desc+'</td><td>'+r.pkg+'</td><td>'+r.volt+'</td><td><span class="tag tag-'+(r.stock==='现货'?'green':'blue')+'">'+r.stock+'</span></td><td><a class="inq-btn" href="#/contact" onclick="toast(\'询价请致电 13602517760 或邮件 zhengkun.zhang@qqxic.cn\')">询价</a></td></tr>'
+  }).join('');
+  return '<div class="page-hero"><div class="container"><div class="crumbs"><a href="#/home">首页</a> / <a href="#/products">产品中心</a> / <a href="#/products/'+bid+'">'+b.name+'</a> / '+ln+'</div><h1>'+b.name+' · '+ln+'</h1><p>常用型号一览，更多完整型号库请联系我们查询，支持批量 BOM 询价</p></div></div>'+
+  '<section class="section"><div class="container"><div class="part-table-wrap"><table class="model-table"><colgroup><col><col><col><col><col><col></colgroup><thead><tr><th>型号</th><th>描述</th><th>封装</th><th>电压/规格</th><th>库存</th><th></th></tr></thead><tbody>'+rowHTML+'</tbody></table></div>'+
+  '<div style="margin-top:26px;text-align:center"><a class="btn btn-primary" href="#/contact">未找到所需型号？电话 / 邮件询价 →</a></div></div></section>';
+}
+
+function viewApps(){
+  var blocks=[
+    ['consumer','消费电子','手机、平板与可穿戴设备的电源与信号链路器件，支持紧凑封装与低功耗方案。',['DC-DC 与 LDO 电源芯片','音频功放与编解码','ESD 保护与信号链路']],
+    ['auto','汽车电子','面向车规应用提供 AEC-Q100 认证器件，覆盖车身、动力与智能座舱。',['车规 MCU 与 CAN 收发','功率 MOSFET 与 IGBT','车载连接器系统']],
+    ['industrial','工业控制','为 PLC、伺服驱动与工业电源提供高可靠性器件与长生命周期方案。',['隔离与接口器件','驱动与功率模块','工业传感器']],
+    ['comm','通信设备','5G 基站与网络设备的电源、时钟与高速信号完整性方案。',['高频电源转换','时钟与缓冲器','高速连接器']],
+    ['newenergy','新能源','光伏逆变、储能与充电桩的功率半导体与磁性元件方案。',['IGBT/SiC 功率器件','功率电感与电容','电流检测传感器']],
+    ['medical','医疗电子','医疗监护与诊断设备所需的高精度模拟器件与电源方案。',['精密运放与 ADC','医疗级电源','传感器接口']]
+  ];
+  var solHTML=blocks.map(function(s){
+    var ul=s[3].map(function(x){return '<li>'+x+'</li>'}).join('');
+    return '<div class="sol-card"><h3>'+icon(s[0])+s[1]+'</h3><ul>'+ul+'</ul></div>'
+  }).join('');
+  return '<div class="page-hero"><div class="container"><div class="crumbs"><a href="#/home">首页</a> / 应用领域</div><h1>应用领域</h1><p>围绕六大行业场景提供器件选型与整体供应方案</p></div></div>'+
+  '<section class="section"><div class="container"><div class="sec-head center"><span class="sec-eyebrow">行业方案</span><h2 class="sec-title">场景化器件供应</h2><p class="sec-desc">每个领域均由专职应用工程师对接，提供选型、替代料与交期建议</p></div>'+
+  '<div class="solution-block">'+solHTML+'</div></div></section>';
+}
+
+function viewNews(){
+  var items=NEWS.map(function(n,i){
+    return '<div class="news-card" onclick="go(\'#/news/'+i+'\')" style="cursor:pointer"><div class="date">'+n.d+' · '+n.cat+'</div><h3>'+n.t+'</h3><p>'+n.c+'</p><a class="more" href="#/news/'+i+'">阅读全文 →</a></div>'
+  }).join('');
+  return '<div class="page-hero"><div class="container"><div class="crumbs"><a href="#/home">首页</a> / 新闻资讯</div><h1>新闻资讯</h1><p>公司动态、展会信息与行业观察</p></div></div>'+
+  '<section class="section"><div class="container"><div class="news-grid">'+items+'</div></div></section>';
+}
+
+function viewNewsDetail(idx){
+  idx=parseInt(idx,10);
+  var n=NEWS[idx];if(!n)return viewNews();
+  var paras=n.body.split('\n').filter(function(p){return p.trim()});
+  var lead=paras[0];
+  var rest=paras.slice(1).map(function(p){return '<p>'+esc(p)+'</p>'}).join('');
+  var tags=['电子元器件','原厂代理',''+n.cat];
+  var tagHTML=tags.map(function(t){return '<span>#'+esc(t)+'</span>'}).join('');
+  var related=NEWS.filter(function(x,i){return i!==idx}).slice(0,3).map(function(x){
+    var realIdx=NEWS.indexOf(x);
+    return '<div class="news-card" onclick="go(\'#/news/'+realIdx+'\')" style="cursor:pointer"><div class="date">'+x.d+' · '+x.cat+'</div><h3>'+x.t+'</h3><a class="more" href="#/news/'+realIdx+'">阅读全文 →</a></div>'
+  }).join('');
+  return '<div class="page-hero"><div class="container"><div class="crumbs"><a href="#/home">首页</a> / <a href="#/news">新闻资讯</a> / '+n.cat+'</div><h1>'+n.t+'</h1><p>'+n.d+' · '+n.cat+'</p></div></div>'+
+  '<section class="section"><div class="container"><div style="max-width:860px;margin:0 auto">'+
+    '<div class="article-card">'+
+      '<div class="article-meta"><span class="cat-tag">'+esc(n.cat)+'</span><span class="date">'+n.d+' 发布</span></div>'+
+      '<div class="article-lead">'+esc(lead)+'</div>'+
+      '<div class="article-body">'+rest+'</div>'+
+      '<div class="article-footer"><div class="article-tags">'+tagHTML+'</div><a class="article-back" href="#/news">← 返回新闻列表</a></div>'+
+    '</div>'+
+    '<div class="article-cta"><div><b>需要相关器件报价或选型支持？</b><span>直接致电或邮件联系我们，应用工程师快速响应</span></div><a class="btn btn-primary" href="#/contact">联系全球芯</a></div>'+
+  '</div></div></section>'+
+  '<section class="section section-alt"><div class="container"><div class="sec-head"><span class="sec-eyebrow">推荐阅读</span><h2 class="sec-title">更多资讯</h2></div><div class="news-grid">'+related+'</div></div></section>';
+}
+
+function viewContact(){
+  return '<div class="page-hero"><div class="container"><div class="crumbs"><a href="#/home">首页</a> / 联系我们</div><h1>联系我们</h1><p>销售咨询 · 技术支持 · 批量询价</p></div></div>'+
+  '<section class="section"><div class="container"><div class="sec-head center"><span class="sec-eyebrow">联系方式</span><h2 class="sec-title">欢迎与我们联系</h2><p class="sec-desc">电话、邮件、地址与服务时间一览，销售团队将尽快响应您的需求</p></div>'+
+    '<div class="contact-grid">'+
+      '<div class="contact-card"><div class="cc-ic">'+icon('phone')+'</div><div><h3>联系电话</h3><div class="cc-main"><a href="tel:13602517760">13602517760</a></div><div class="cc-sub">批量询价、交期查询与紧急采购可直接致电</div></div></div>'+
+      '<div class="contact-card"><div class="cc-ic">'+icon('mail')+'</div><div><h3>电子邮箱</h3><div class="cc-main"><a href="mailto:zhengkun.zhang@qqxic.cn">zhengkun.zhang@qqxic.cn</a></div><div class="cc-sub">支持 BOM 清单批量询价，工作日 2 小时内响应</div></div></div>'+
+      '<div class="contact-card"><div class="cc-ic">'+icon('pin')+'</div><div><h3>公司地址</h3><div class="cc-main" style="font-size:16.5px">深圳市龙华区龙华街道和联社区<br>锦华发工业园3栋硅谷大院T1栋</div><div class="cc-sub">深圳中心仓 · 香港中转仓</div></div></div>'+
+      '<div class="contact-card"><div class="cc-ic">'+icon('clock')+'</div><div><h3>服务时间</h3><div class="cc-main" style="font-size:17px">周一至周六 9:00–18:00</div><div class="cc-sub">紧急询价可致电值班热线，节假日另行通知</div></div></div>'+
+    '</div>'+
+  '</div></section>';
+}
+
+/* ===== 图标 ===== */
+function icon(n){
+  var m={
+    shield:'<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>',
+    box:'<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/></svg>',
+    chip:'<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg>',
+    doc:'<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></svg>',
+    cert:'<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="6"/><path d="M9 14.5L7.5 21l4.5-2.5L16.5 21 15 14.5"/></svg>',
+    search:'<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.5-4.5"/></svg>',
+    phone:'<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.8a2 2 0 0 1-.4 2.1L8.1 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.9.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>',
+    mail:'<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg>',
+    pin:'<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>',
+    clock:'<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>',
+    consumer:'<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 11h8M8 16h4"/></svg>',
+    auto:'<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M6 11l2-5h8l2 5M5 17a2 2 0 1 0 4 0M15 17a2 2 0 1 0 4 0"/><path d="M5 17H3v-6l2-5M19 17h2v-6l-2-5"/></svg>',
+    industrial:'<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V9l6 4V9l6 4V3h6v18z"/></svg>',
+    comm:'<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12a7 7 0 0 1 14 0M8.5 12a3.5 3.5 0 0 1 7 0"/><circle cx="12" cy="14" r="1.5"/><path d="M12 14l3 5"/></svg>',
+    newenergy:'<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h6l-1 8 9-12h-6z"/></svg>',
+    medical:'<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 4h18M3 4v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V4M12 16v4M8 20h8"/><path d="M12 8v4M10 10h4"/></svg>'
+  };
+  return m[n]||'';
+}
+
+/* ===== 路由 ===== */
+function go(h){
+  if(location.hash!==h){location.hash=h}else{render()}
+}
+function render(){
+  var h=location.hash||'#/home';
+  var parts=h.replace(/^#\//,'').split('/');
+  var root=document.getElementById('viewRoot');
+  var html='';
+  if(parts[0]==='home'||parts[0]===''){html=viewHome();setNav('home')}
+  else if(parts[0]==='about'){html=viewAbout();setNav('about')}
+  else if(parts[0]==='products'){
+    setNav('products');
+    if(parts[1]&&parts[2]){html=viewLine(parts[1],parts[2])}
+    else if(parts[1]){html=viewBrand(parts[1])}
+    else{html=viewProducts()}
+  }
+  else if(parts[0]==='apps'){html=viewApps();setNav('apps')}
+  else if(parts[0]==='news'){
+    setNav('news');
+    if(parts[1]!==undefined){html=viewNewsDetail(parts[1])}
+    else{html=viewNews()}
+  }
+  else if(parts[0]==='contact'){html=viewContact();setNav('contact')}
+  else{html=viewHome();setNav('home')}
+  root.innerHTML=html;
+  window.scrollTo(0,0);
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+function setNav(key){
+  var links=document.querySelectorAll('#navLinks a[data-nav]');
+  for(var i=0;i<links.length;i++){
+    var k=links[i].getAttribute('data-nav');
+    links[i].classList.toggle('active',k===key);
+  }
+}
+(function(){
+  window.addEventListener('hashchange',render);
+  document.getElementById('menuToggle').addEventListener('click',function(){
+    document.getElementById('mobileMenu').classList.toggle('open');
+  });
+  render();
+})();
+</script>
+</body>
+</html>
